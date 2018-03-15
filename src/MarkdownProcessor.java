@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Markdown file parser. Able to generate HTML equivalent of given input.
+ * Markdown file processor. Generates syntax tree of given input.
  */
-public class Parser {
+public class MarkdownProcessor {
     private Scanner scanner;
     private static final HashMap<String, Runnable> visitors = new HashMap<>();
 
     /**
-     * Parser takes scanner that reads input string.
+     * Processor takes scanner that reads input string/file.
      *
      * @param scanner
      */
-    public Parser(Scanner scanner) {
+    public MarkdownProcessor(Scanner scanner) {
         //TODO: Determine how to specify output file. Ask for filename or final field?
         this.scanner = scanner;
     }
