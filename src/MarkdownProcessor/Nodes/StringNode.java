@@ -1,6 +1,6 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
-import Translators.Translator;
+import MarkdownProcessor.Translators.Translator;
 
 /**
  * String Node representing a plain String.

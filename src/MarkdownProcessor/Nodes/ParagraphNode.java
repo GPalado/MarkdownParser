@@ -1,6 +1,6 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
-import Translators.Translator;
+import MarkdownProcessor.Translators.Translator;
 
 /**
  * Paragraph Node specifying a paragraph break.

@@ -1,9 +1,7 @@
-import Nodes.LineNode;
-import Nodes.ParserNode;
+package MarkdownProcessor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import MarkdownProcessor.Nodes.MarkdownFileNode;
+
 import java.util.Scanner;
 
 /**
@@ -11,7 +9,6 @@ import java.util.Scanner;
  */
 public class MarkdownProcessor {
     private Scanner scanner;
-    private static final HashMap<String, Runnable> visitors = new HashMap<>();
 
     /**
      * Processor takes scanner that reads input string/file.
@@ -23,20 +20,12 @@ public class MarkdownProcessor {
         this.scanner = scanner;
     }
 
-    static {
-        //TODO: initialize map content for visitors. Decide where this belongs.
-    }
-
     /**
      * Parses markdown lines into LineNodes.
      *
      * @return List<ParserNode> representing the text in the scanner.
      */
-    public List<ParserNode> parseMarkdown() {
-        List<ParserNode> lines = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            lines.add(new LineNode(scanner.nextLine()));
-        }
-        return lines;
+    public MarkdownFileNode parseMarkdown() {
+        return new MarkdownFileNode(scanner);
     }
 }

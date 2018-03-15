@@ -1,4 +1,4 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
 /**
  * Emphasis Node representing text with the italics effect applied.

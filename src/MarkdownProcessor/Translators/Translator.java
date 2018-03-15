@@ -1,9 +1,9 @@
-package Translators;
+package MarkdownProcessor.Translators;
 
-import Nodes.*;
+import MarkdownProcessor.Nodes.*;
 
 /**
- * Interface specifying the different translators that can be applied to {@link Nodes.TextNode}.
+ * Interface specifying the different translators that can be applied to {@link MarkdownProcessor.Nodes.TextNode}.
  */
 public interface Translator {
 

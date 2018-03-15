@@ -1,6 +1,6 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
-import Translators.Translator;
+import MarkdownProcessor.Translators.Translator;
 
 /**
  * Generic TextNode interface. TextNodes can be translated to a different language by accepting Translator. E.g. HTML.

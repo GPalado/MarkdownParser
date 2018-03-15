@@ -1,6 +1,6 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
-import Translators.Translator;
+import MarkdownProcessor.Translators.Translator;
 
 /**
  * Header node representing a line of text with the header effect. Header level is specified in markdown by the number

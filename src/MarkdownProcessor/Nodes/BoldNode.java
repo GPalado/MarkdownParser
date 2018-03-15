@@ -1,4 +1,4 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
 /**
  * Bold node representing text with the bold effect applied.

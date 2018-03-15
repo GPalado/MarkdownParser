@@ -1,6 +1,6 @@
-package Nodes;
+package MarkdownProcessor.Nodes;
 
-import Translators.Translator;
+import MarkdownProcessor.Translators.Translator;
 
 import java.util.List;
 import java.util.stream.Collectors;
