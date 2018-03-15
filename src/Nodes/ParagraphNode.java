@@ -1,5 +1,7 @@
 package Nodes;
 
+import Translators.Translator;
+
 /**
  * Paragraph Node specifying a paragraph break.
  */
@@ -10,12 +12,12 @@ public class ParagraphNode implements TextNode {
     }
 
     @Override
-    public String toHTML() {
-        return "</p><p>";
+    public String toString() {
+        return "\n";
     }
 
     @Override
-    public String toString() {
-        return "\n";
+    public String accept(Translator t) {
+        return t.translateParagraph(this);
     }
 }

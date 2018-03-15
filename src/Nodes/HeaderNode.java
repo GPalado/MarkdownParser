@@ -1,10 +1,13 @@
 package Nodes;
 
+import Translators.Translator;
+
 /**
  * Header node representing a line of text with the header effect. Header level is specified in markdown by the number
  * of hashes.
  */
-public class HeaderNode implements ParserNode{
+public class HeaderNode implements TextNode {
+    private String content;
 
     public HeaderNode(String line) {
         // TODO: count hashes to know level of header
@@ -12,12 +15,12 @@ public class HeaderNode implements ParserNode{
     }
 
     @Override
-    public String toHTML() {
-        return null;
+    public String toString() {
+        return content;
     }
 
     @Override
-    public String toString() {
-        return null;
+    public String accept(Translator t) {
+        return t.translateHeader(this);
     }
 }

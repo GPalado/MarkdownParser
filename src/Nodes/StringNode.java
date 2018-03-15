@@ -1,5 +1,7 @@
 package Nodes;
 
+import Translators.Translator;
+
 /**
  * String Node representing a plain String.
  */
@@ -10,8 +12,9 @@ public class StringNode implements TextNode {
         this.value = value;
     }
 
+
     @Override
-    public String toHTML() {
-        return value;
+    public String accept(Translator t) {
+        return t.translateString(this);
     }
 }

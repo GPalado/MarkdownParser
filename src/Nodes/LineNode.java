@@ -1,5 +1,7 @@
 package Nodes;
 
+import Translators.Translator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,7 +10,7 @@ import java.util.stream.Stream;
  * Line Node specifying a line of text. Can consist of several {@link ParserNode}s.
  */
 public class LineNode implements TextNode {
-    protected List<ParserNode> contentNodes;
+    protected List<TextNode> contentNodes;
 
     public LineNode(String line) {
         int idx = 0;
@@ -22,16 +24,14 @@ public class LineNode implements TextNode {
     }
 
     @Override
-    public String toHTML() {
-        return Stream.of(contentNodes)
-                .map(node -> toHTML())
-                .collect(Collectors.joining());
-    }
-
-    @Override
     public String toString() {
         return Stream.of(contentNodes)
                 .map(node -> toString())
                 .collect(Collectors.joining());
+    }
+
+    @Override
+    public String accept(Translator t) {
+        return t.translateLine(this);
     }
 }
