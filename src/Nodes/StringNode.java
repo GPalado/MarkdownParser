@@ -3,7 +3,7 @@ package Nodes;
 /**
  * String Node representing a plain String.
  */
-public class StringNode implements ParserNode {
+public class StringNode implements TextNode {
     private String value;
 
     public StringNode(String value) {

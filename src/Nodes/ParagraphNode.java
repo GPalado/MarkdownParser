@@ -3,9 +3,9 @@ package Nodes;
 /**
  * Paragraph Node specifying a paragraph break.
  */
-public class ParaNode implements ParserNode {
+public class ParagraphNode implements TextNode {
 
-    public ParaNode() {
+    public ParagraphNode() {
         // TODO: figure out how to make contents of para contained in tags
     }
 

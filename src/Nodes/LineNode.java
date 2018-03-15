@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 /**
  * Line Node specifying a line of text. Can consist of several {@link ParserNode}s.
  */
-public class LineNode implements ParserNode {
+public class LineNode implements TextNode {
     protected List<ParserNode> contentNodes;
 
     public LineNode(String line) {

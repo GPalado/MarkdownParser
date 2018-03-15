@@ -1,14 +1,18 @@
 package Nodes;
 
+import Translators.Translator;
+
 /**
- * Generic ParserNode interface which specifies the languages to which the node's content can be translated to.
+ * Generic TextNode interface. TextNodes can be translated to a different language by accepting Translator. E.g. HTML.
  */
-public interface ParserNode {
+public interface TextNode {
 
     /**
-     * Returns the HTML equivalent of this node's content.
-     *
-     * @return String representation of this node in HTML.
+     * Returns the equivalent of this node's content in a certain language, depending on the translator.
+     * @param t Translator
+     * @return String representation of this node corresponding to the given Visitor.
      */
-    String toHTML();
+    String accept(Translator t);
+
+
 }
