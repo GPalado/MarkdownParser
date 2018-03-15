@@ -1,4 +1,4 @@
-package Visitors;
+package Translators;
 
 import Nodes.*;
 
