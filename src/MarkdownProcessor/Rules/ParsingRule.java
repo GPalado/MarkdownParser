@@ -7,13 +7,14 @@ import MarkdownProcessor.Nodes.TextNode;
  * and the actions applied to each rule.
  */
 public interface ParsingRule {
+    //TODO: Concerns about sequential requirements for calls to these methods.s
 
     /**
      * Returns true if the given string conforms to the rule.
      * @param s
      * @return true if it fits the rule's conditions, false otherwise.
      */
-    boolean condition(String s);
+    boolean meetsCondition(String s);
 
     /**
      * Returns the TextNode that is created when the rule is applied.
