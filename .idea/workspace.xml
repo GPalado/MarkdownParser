@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="44990997-ca23-4831-8491-a0e2dfc6303c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SWEN301_Craft_Project.iml" afterPath="$PROJECT_DIR$/SWEN301_Craft_Project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/MarkdownProcessor.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/MarkdownProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/BoldNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/BoldNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/EmphasisNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/EmphasisNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/HeaderNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/HeaderNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/StringNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/StringNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/TextNode.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/TextNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MarkdownProcessor/Translators/HTMLTranslator.java" afterPath="$PROJECT_DIR$/src/MarkdownProcessor/Translators/HTMLTranslator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,15 +29,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTMLTranslator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Translators/HTMLTranslator.java">
+      <file leaf-file-name="MarkdownFileNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/MarkdownFileNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1407#1408#0" expanded="true" />
-                <element signature="e#1445#1446#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,6 +49,33 @@
               <folding>
                 <element signature="e#532#533#0" expanded="true" />
                 <element signature="e#560#561#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParagraphNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/ParagraphNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+              <folding>
+                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#476#477#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="61">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#857#858#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,9 +139,9 @@
         <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/BoldNode.java" />
         <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/StringNode.java" />
         <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/TextNode.java" />
-        <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java" />
         <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/HeaderNode.java" />
         <option value="$PROJECT_DIR$/src/MarkdownProcessor/Translators/HTMLTranslator.java" />
+        <option value="$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java" />
       </list>
     </option>
   </component>
@@ -380,8 +397,8 @@
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1130#1131#0" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1128#1129#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -505,18 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/MarkdownProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/BoldNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -535,41 +540,6 @@
           <folding>
             <element signature="e#335#336#0" expanded="true" />
             <element signature="e#381#382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/ParagraphNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding>
-            <element signature="e#427#428#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/MarkdownFileNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="26" column="28" lean-forward="false" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#1130#1131#0" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -606,12 +576,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Translators/HTMLTranslator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1407#1408#0" expanded="true" />
             <element signature="e#1445#1446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/MarkdownProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/MarkdownFileNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/ParagraphNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkdownProcessor/Nodes/LineNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
           </folding>
         </state>
       </provider>
