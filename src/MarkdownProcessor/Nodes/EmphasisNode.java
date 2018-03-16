@@ -2,14 +2,19 @@ package MarkdownProcessor.Nodes;
 
 import MarkdownProcessor.Translators.Translator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * Emphasis Node representing text with the italics effect applied.
  */
-public class EmphasisNode extends LineNode {
+public class EmphasisNode implements CollectorNode {
+    private List<TextNode> children;
 
-    public EmphasisNode(String line) {
+    public EmphasisNode(Scanner scanner) {
+        children = new ArrayList<>();
         // TODO: parse following content to identify where effect begins, ends, content, etc.
-        super(line);
     }
 
     @Override
@@ -20,5 +25,10 @@ public class EmphasisNode extends LineNode {
     @Override
     public String toString() {
         return "*" + super.toString() + "*";
+    }
+
+    @Override
+    public List<TextNode> getChildren() {
+        return children;
     }
 }

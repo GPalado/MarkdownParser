@@ -2,18 +2,19 @@ package MarkdownProcessor.Nodes;
 
 import MarkdownProcessor.Translators.Translator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class MarkdownFileNode implements TextNode {
-    List<LineNode> fileContent;
+public class MarkdownFileNode implements CollectorNode {
+    List<TextNode> children;
 
     public MarkdownFileNode(Scanner scanner) {
-        // TODO: create children
+        children = new ArrayList<>();
         while (scanner.hasNextLine()) {
-            fileContent.add(new LineNode(scanner.nextLine()));
+            children.add(new ParagraphNode(scanner));
         }
     }
 
@@ -24,8 +25,13 @@ public class MarkdownFileNode implements TextNode {
 
     @Override
     public String toString(){
-        return Stream.of(fileContent)
+        return Stream.of(children)
                 .map(node -> toString())
                 .collect(Collectors.joining());
+    }
+
+    @Override
+    public List<TextNode> getChildren() {
+        return children;
     }
 }
