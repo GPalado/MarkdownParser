@@ -1,5 +1,7 @@
 package MarkdownProcessor.Nodes;
 
+import MarkdownProcessor.Translators.Translator;
+
 /**
  * Bold node representing text with the bold effect applied.
  */
@@ -11,8 +13,8 @@ public class BoldNode extends LineNode {
     }
 
     @Override
-    public String toHTML() {
-        return "<strong>" + super.toHTML() + "<strong>";
+    public String accept(Translator t) {
+        return t.translateBold(this);
     }
 
     @Override

@@ -23,6 +23,10 @@ public class LineNode implements TextNode {
         }
     }
 
+    public List<TextNode> getContentNodes(){
+        return contentNodes;
+    }
+
     @Override
     public String toString() {
         return Stream.of(contentNodes)

@@ -12,7 +12,6 @@ public class StringNode implements TextNode {
         this.value = value;
     }
 
-
     @Override
     public String accept(Translator t) {
         return t.translateString(this);

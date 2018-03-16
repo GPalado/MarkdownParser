@@ -1,5 +1,7 @@
 package MarkdownProcessor.Nodes;
 
+import MarkdownProcessor.Translators.Translator;
+
 /**
  * Emphasis Node representing text with the italics effect applied.
  */
@@ -11,8 +13,8 @@ public class EmphasisNode extends LineNode {
     }
 
     @Override
-    public String toHTML() {
-        return "<em>" + super.toHTML() + "</em>";
+    public String accept(Translator t){
+        return t.translateEmphasis(this);
     }
 
     @Override
