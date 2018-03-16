@@ -4,7 +4,8 @@ import MarkdownProcessor.Translators.Translator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Bold node representing text with the bold effect applied.
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class BoldNode implements CollectorNode {
     private List<TextNode> children;
 
-    public BoldNode(Scanner scanner) {
+    public BoldNode(String s) {
         children = new ArrayList<>();
         // TODO: parse following content to identify where effect begins, ends, content, etc.
     }
@@ -24,7 +25,11 @@ public class BoldNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "**" + super.toString() + "**";
+        return "**" +
+                Stream.of(children)
+                .map(child -> child.toString())
+                .collect(Collectors.joining()) +
+                "**";
     }
 
     @Override

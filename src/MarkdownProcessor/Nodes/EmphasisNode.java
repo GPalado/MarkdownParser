@@ -5,6 +5,8 @@ import MarkdownProcessor.Translators.Translator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Emphasis Node representing text with the italics effect applied.
@@ -24,7 +26,11 @@ public class EmphasisNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "*" + super.toString() + "*";
+        return "*" +
+                Stream.of(children)
+                .map(child -> child.toString())
+                .collect(Collectors.joining()) +
+                "*";
     }
 
     @Override
