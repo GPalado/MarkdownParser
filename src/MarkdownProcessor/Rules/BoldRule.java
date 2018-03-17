@@ -1,7 +1,6 @@
 package MarkdownProcessor.Rules;
 
 import MarkdownProcessor.Nodes.BoldNode;
-import MarkdownProcessor.Nodes.EmphasisNode;
 import MarkdownProcessor.Nodes.TextNode;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class BoldRule implements EffectRule {
         Scanner newScanner = new Scanner(line);
         List<TextNode> children = new ArrayList<>();
         while(newScanner.hasNext()){
-            children.add(ParserHelper.applyEffectRules(newScanner));
+            children.addAll(ParserHelper.applyEffectRules(newScanner));
         }
         return new BoldNode(children);
     }

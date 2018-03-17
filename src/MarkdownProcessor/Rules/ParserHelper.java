@@ -1,12 +1,11 @@
 package MarkdownProcessor.Rules;
 
-import MarkdownProcessor.Nodes.MarkdownFileNode;
 import MarkdownProcessor.Nodes.StringNode;
 import MarkdownProcessor.Nodes.TextNode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 /**
@@ -30,15 +29,24 @@ public class ParserHelper {
      * @param s
      * @returns TextNode corresponding to an effect rule if one matches.
      */
-    public static TextNode applyEffectRules(Scanner s){
+    public static List<TextNode> applyEffectRules(Scanner s){
         System.out.println("Parser applyEffectRules");
-        for(EffectRule r : EFFECT_RULES) {
-            if(r.meetsCondition(s)) {
-                System.out.println("Parser meets "+r.getClass());
-                System.out.println(r.getClass());
+        List<TextNode> nodes = new ArrayList<>();
+        while(s.hasNextLine()) {
+            nodes.add(processLine(new Scanner(s.nextLine())));
+        }
+        return nodes;
+    }
+
+    private static TextNode processLine(Scanner s){
+        for (EffectRule r : EFFECT_RULES) {
+            System.out.println("Checking " + r.getClass());
+            if (r.meetsCondition(s)) {
+                System.out.println("Parser meets " + r.getClass());
                 return r.applyAction(s);
             }
         }
+
         System.out.println("Parser no match");
         //TODO: if no rules can be applied, read as string? What will be the delimiter?
         return new StringNode(s.nextLine());

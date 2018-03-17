@@ -10,7 +10,7 @@ import java.util.*;
  * can denote bold or italics effects.
  */
 public class AsteriskRule implements EffectRule {
-    private final List<Integer> validAsteriskNums = new ArrayList<>(Arrays.asList(1, 2));
+    private static final HashMap<Integer, EffectRule>  ASTERISK_COUNT_TO_RULES = new HashMap<>();
 
     private enum Side {
         LEFT,
@@ -18,54 +18,83 @@ public class AsteriskRule implements EffectRule {
         MIDDLE,
     }
 
+    static {
+        ASTERISK_COUNT_TO_RULES.put(1, new EmphasisRule());
+        ASTERISK_COUNT_TO_RULES.put(2, new BoldRule());
+    }
+
     public AsteriskRule() {
     }
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        s.useDelimiter("\n");
-        return s.hasNext("[\\\\*]+[a-zA-Z0-9]+");
+        return false;
+//        s.useDelimiter("\n");
+//        return s.hasNext("[\\\\*]+[a-zA-Z0-9//\\\\`~!@#$%^&*()-=_+\\[\\]{}|'\",?><,.:;]+");
     }
 
     @Override
     public TextNode applyAction(Scanner s) {
-        List<TextNode> children = new ArrayList<>();
+        HashMap<Integer, TextNode> children = new HashMap<>();
         if (meetsCondition(s)) {
             String line = s.nextLine();
             List<AsteriskGroup> asteriskGroups = findGroupings(line);
-            if(asteriskGroups.size() == 1){ //cannot pair a single group of asterisks. It belongs to a string
+            if (asteriskGroups.size() == 1) { //cannot pair a single group of asterisks. It belongs to a string
                 return new StringNode(line);
             }
-            for (int i = 0; i < asteriskGroups.size() - 1; i++) {
-                AsteriskGroup group1 = asteriskGroups.get(i);
-                AsteriskGroup group2 = asteriskGroups.get(i + 1);
-                if (group1.remainder != group2.remainder) { //pair group1 rightmost asterisks with leftmost group2 asterisks
+            while(true) {
+                Optional<AsteriskGroup> group1Optional = findLeftmostRemainders(asteriskGroups);
+                Optional<AsteriskGroup> group2Optional = findRightmostRemainders(asteriskGroups);
+                if(!group1Optional.isPresent()) { //Left has been fully paired. Return smth?
+                    return children.get(0);
+                } else if(!group2Optional.isPresent()){ //Right has been fully paired.
+                    return new StringNode(line.substring(0, group1Optional.get().startingIdx + group1Optional.get().remainder));
+                } else {
+                    AsteriskGroup group1 = group1Optional.get();
+                    AsteriskGroup group2 = group2Optional.get();
                     int min = Math.min(group1.remainder, group2.remainder);
                     int numToMatch = findMaxValidNumber(min);
                     TextNode node = pairInternal(group1, group2, numToMatch, line);
-                    children.add(node);
-                    int remainder1 = group1.count - numToMatch;
+                    int remainder1 = group1.remainder - numToMatch;
+                    children.put(group1.startingIdx + group1.remainder, node);
                     group1.setRemainder(remainder1, remainder1 == 0 ? Side.MIDDLE : Side.LEFT);
-                    int remainder2 = group2.count - numToMatch;
+                    int remainder2 = group2.remainder - numToMatch;
                     group2.setRemainder(remainder2, remainder2 == 0 ? Side.MIDDLE : Side.RIGHT);
-                } else {
-
                 }
             }
         }
         return null;
     }
 
+    private Optional<AsteriskGroup> findRightmostRemainders(List<AsteriskGroup> groups){
+        for(int i = groups.size() - 1; i >= 0; i--){
+            if(groups.get(i).hasRemainder()) {
+                return Optional.of(groups.get(i));
+            }
+        }
+        return Optional.empty();
+    }
+
+    private Optional<AsteriskGroup> findLeftmostRemainders(List<AsteriskGroup> groups){
+        for(int i = 0; i < groups.size(); i++){
+            if(groups.get(i).hasRemainder()) {
+                return Optional.of(groups.get(i));
+            }
+        }
+        return Optional.empty();
+    }
+
     /**
      * Finds the maximum number of asterisks that can be paired, given the number of existing asterisks.
+     *
      * @param num
      * @return maximum number of asterisks that can be paired, with regards to the given number of existing
      * asterisks.
      */
     private int findMaxValidNumber(int num) {
         int max = 0;
-        for(Integer i : validAsteriskNums){
-            if(i <= num && i > max){
+        for (Integer i : ASTERISK_COUNT_TO_RULES.keySet()) {
+            if (i <= num && i > max) {
                 max = i;
             }
         }
@@ -74,6 +103,7 @@ public class AsteriskRule implements EffectRule {
 
     /**
      * Pairs the given numberOfAsterisks in groups1 and 2 within the given line.
+     *
      * @param group1
      * @param group2
      * @param numberOfAsterisks
@@ -82,14 +112,16 @@ public class AsteriskRule implements EffectRule {
      * given number of asterisks.
      */
     private TextNode pairInternal(AsteriskGroup group1, AsteriskGroup group2, int numberOfAsterisks, String line) {
-        return applyAction(
+        if(ASTERISK_COUNT_TO_RULES.get(numberOfAsterisks) == null) {
+            throw new IllegalArgumentException("Invalid number of asterisks given");
+        }
+        return ASTERISK_COUNT_TO_RULES.get(numberOfAsterisks).applyAction(
                 new Scanner(
                         line.substring(
-                                group1.startingIdx + group1.count - numberOfAsterisks,
-                                group2.startingIdx + numberOfAsterisks)
+                                group1.startingIdx + group1.remainder - numberOfAsterisks,
+                                group2.startingIdx + group2.count - group2.remainder + numberOfAsterisks)
                 )
         );
-
     }
 
     /**
@@ -180,7 +212,7 @@ public class AsteriskRule implements EffectRule {
         /**
          * @return true if the group has remaining asterisks to be paired, false otherwise.
          */
-        public boolean hasRemainder(){
+        public boolean hasRemainder() {
             return remainder != 0;
         }
     }

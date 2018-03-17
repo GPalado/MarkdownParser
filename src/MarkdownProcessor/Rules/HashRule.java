@@ -35,10 +35,7 @@ public class HashRule implements EffectRule {
         List<TextNode> children = new ArrayList<>();
         String line = s.nextLine();
         Scanner lineScanner = new Scanner(line);
-        while(lineScanner.hasNext()){
-            TextNode child = ParserHelper.applyEffectRules(lineScanner);
-            children.add(child);
-        }
+        children.addAll(ParserHelper.applyEffectRules(lineScanner));
         return children;
     }
 

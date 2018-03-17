@@ -23,7 +23,7 @@ public class EmphasisRule implements EffectRule {
         Scanner newScanner = new Scanner(line);
         List<TextNode> children = new ArrayList<>();
         while(newScanner.hasNext()){
-            children.add(ParserHelper.applyEffectRules(newScanner));
+            children.addAll(ParserHelper.applyEffectRules(newScanner));
         }
         return new EmphasisNode(children);
     }
