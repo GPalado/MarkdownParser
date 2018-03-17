@@ -1,6 +1,7 @@
 package MarkdownProcessor;
 
-import MarkdownProcessor.Nodes.MarkdownFileNode;
+import MarkdownProcessor.Nodes.TextNode;
+import MarkdownProcessor.Rules.ParserHelper;
 
 import java.util.Scanner;
 
@@ -14,9 +15,9 @@ public class MarkdownProcessor {
     /**
      * Parses markdown lines into LineNodes.
      *
-     * @return List<ParserNode> representing the text in the scanner.
+     * @return TextNode representing the text in the scanner.
      */
-    public MarkdownFileNode parseMarkdown(Scanner scanner) {
-        return new MarkdownFileNode(scanner);
+    public TextNode parseMarkdown(Scanner scanner) {
+        return ParserHelper.applyStructureRules(scanner);
     }
 }
