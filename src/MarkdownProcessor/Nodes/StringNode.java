@@ -13,6 +13,11 @@ public class StringNode implements TextNode {
     }
 
     @Override
+    public String toString(){
+        return value;
+    }
+
+    @Override
     public String accept(Translator t) {
         return t.translateString(this);
     }
