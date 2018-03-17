@@ -2,9 +2,7 @@ package MarkdownProcessor.Nodes;
 
 import MarkdownProcessor.Translators.Translator;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,9 +12,8 @@ import java.util.stream.Stream;
 public class EmphasisNode implements CollectorNode {
     private List<TextNode> children;
 
-    public EmphasisNode(Scanner scanner) {
-        children = new ArrayList<>();
-        // TODO: parse following content to identify where effect begins, ends, content, etc.
+    public EmphasisNode(List<TextNode> children) {
+        this.children = children;
     }
 
     @Override

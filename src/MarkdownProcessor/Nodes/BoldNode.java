@@ -2,7 +2,6 @@ package MarkdownProcessor.Nodes;
 
 import MarkdownProcessor.Translators.Translator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,9 +12,8 @@ import java.util.stream.Stream;
 public class BoldNode implements CollectorNode {
     private List<TextNode> children;
 
-    public BoldNode(String s) {
-        children = new ArrayList<>();
-        // TODO: parse following content to identify where effect begins, ends, content, etc.
+    public BoldNode(List<TextNode> children) {
+        this.children = children;
     }
 
     @Override
