@@ -13,14 +13,8 @@ import java.util.stream.Stream;
 public class LineNode implements CollectorNode {
     private List<TextNode> children;
 
-    public LineNode(String line) {
-        children = new ArrayList<>();
-        int idx = 0;
-        while (idx < line.length()) {
-            // TODO: check what's next and create appropriate "children"
-            // cases: *, **, *** etc., #, ---, [0-9]+." ", empty line, etc.
-            idx++;
-        }
+    public LineNode(List<TextNode> children) {
+        this.children = children;
     }
 
     @Override

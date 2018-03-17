@@ -15,10 +15,9 @@ public class HeaderNode implements CollectorNode {
     private List<TextNode> children;
     private int depth;
 
-    public HeaderNode(String line) {
-        children = new ArrayList<>();
-        // TODO: count hashes to know level of header. other effects?
-        // header different to line node? Or can headers also have multiple children?
+    public HeaderNode(int depth, List<TextNode> children) {
+        this.depth = depth;
+        this.children = children;
     }
 
     public int getDepth(){

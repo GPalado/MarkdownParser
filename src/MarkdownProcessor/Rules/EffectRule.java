@@ -2,6 +2,8 @@ package MarkdownProcessor.Rules;
 
 import MarkdownProcessor.Nodes.TextNode;
 
+import java.util.Optional;
+
 /**
  * Specifies the functionalities of parsing rules such as the conformity to certain conditions,
  * and the actions applied to each rule.
@@ -19,7 +21,8 @@ public interface ParsingRule {
     /**
      * Returns the TextNode that is created when the rule is applied.
      * @param s
-     * @return TextNode representing the rule applied to the given string.
+     * @return Optional of the TextNode representing the rule applied to the given string if the string meets the condition,
+     * Optional.empty() otherwise.
      */
-    TextNode action(String s);
+    Optional<TextNode> applyAction(String s);
 }
