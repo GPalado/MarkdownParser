@@ -33,12 +33,13 @@ public class ParserHelper {
         System.out.println("Parser applyEffectRules");
         List<TextNode> nodes = new ArrayList<>();
         while(s.hasNextLine()) {
-            nodes.add(processLine(new Scanner(s.nextLine())));
+            nodes.addAll(processLine(new Scanner(s.nextLine())));
         }
+        System.out.println("done.");
         return nodes;
     }
 
-    private static TextNode processLine(Scanner s){
+    private static List<TextNode> processLine(Scanner s){
         for (EffectRule r : EFFECT_RULES) {
             System.out.println("Checking " + r.getClass());
             if (r.meetsCondition(s)) {
@@ -46,9 +47,8 @@ public class ParserHelper {
                 return r.applyAction(s);
             }
         }
-
         System.out.println("Parser no match");
         //TODO: if no rules can be applied, read as string? What will be the delimiter?
-        return new StringNode(s.nextLine());
+        return Arrays.asList(new StringNode(s.nextLine()));
     }
 }

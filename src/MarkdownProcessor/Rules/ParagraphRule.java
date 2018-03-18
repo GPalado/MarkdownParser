@@ -1,6 +1,5 @@
 package MarkdownProcessor.Rules;
 
-import MarkdownProcessor.Nodes.LineNode;
 import MarkdownProcessor.Nodes.ParagraphNode;
 import MarkdownProcessor.Nodes.TextNode;
 
@@ -15,7 +14,6 @@ public class ParagraphRule implements StructureRule {
 
     @Override
     public TextNode applyStructure(Scanner s) {
-        System.out.println("Paragraph applyStructure");
         List<TextNode> lines = new ArrayList<>();
         while (s.hasNextLine()) {
             String line = s.nextLine();
@@ -33,9 +31,7 @@ public class ParagraphRule implements StructureRule {
     }
 
     private void scanThroughEmptyLines(Scanner scanner) {
-        //TODO check this logic.
         while (scanner.hasNext("\n")) {
-            System.out.println("scan through");
             scanner.nextLine();
         }
     }

@@ -2,6 +2,7 @@ package MarkdownProcessor.Rules;
 
 import MarkdownProcessor.Nodes.TextNode;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,5 +23,5 @@ public interface EffectRule {
      * @param s
      * @return TextNode representing the rule applied to the given string.
      */
-    TextNode applyAction(Scanner s);
+    List<TextNode> applyAction(Scanner s);
 }

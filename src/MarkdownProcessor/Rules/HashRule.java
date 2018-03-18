@@ -4,6 +4,7 @@ import MarkdownProcessor.Nodes.HeaderNode;
 import MarkdownProcessor.Nodes.TextNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,10 +24,10 @@ public class HashRule implements EffectRule {
     }
 
     @Override
-    public TextNode applyAction(Scanner s) {
+    public List<TextNode> applyAction(Scanner s) {
         if (meetsCondition(s)) {
             int depth = filterHashesAndSpaces(s);
-            return new HeaderNode(depth > 5 ? 5 : depth, parseChildren(s));
+            return Arrays.asList(new HeaderNode(depth > 5 ? 5 : depth, parseChildren(s)));
         }
         throw new IllegalArgumentException("HashRule cannot be applied to the given input.");
     }

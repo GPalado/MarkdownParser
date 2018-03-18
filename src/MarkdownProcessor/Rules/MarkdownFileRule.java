@@ -13,7 +13,6 @@ public class MarkdownFileRule implements StructureRule {
 
     @Override
     public TextNode applyStructure(Scanner s) {
-        System.out.println("Markdown applyStructure");
         List<TextNode> paragraphs = new ArrayList<>();
         while(s.hasNextLine()){
             paragraphs.add(new ParagraphRule().applyStructure(s));
