@@ -35,4 +35,9 @@ public class ParagraphRule implements StructureRule {
             scanner.nextLine();
         }
     }
+
+    @Override
+    public boolean meetsCondition(Scanner s) {
+        return true;
+    }
 }

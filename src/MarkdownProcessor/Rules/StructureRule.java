@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Describes a rule specific to the structure of the input.
  */
-public interface StructureRule {
+public interface StructureRule extends Rule {
 
     /**
      * Applies the structure rule to the given scanner input.

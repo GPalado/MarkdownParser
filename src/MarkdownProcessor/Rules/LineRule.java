@@ -15,4 +15,9 @@ public class LineRule implements StructureRule {
         List<TextNode> children =  ParserHelper.applyEffectRules(s);
         return new LineNode(children);
     }
+
+    @Override
+    public boolean meetsCondition(Scanner s) {
+        return true;
+    }
 }
