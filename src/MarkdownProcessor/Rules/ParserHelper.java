@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class ParserHelper {
 
-    public static final List<EffectRule> EFFECT_RULES = Arrays.asList(new HashRule(), new AsteriskRule());
+    public static final List<EffectRule> EFFECT_RULES = Arrays.asList(new AsteriskRule());
 
     /**
      * Attempts to apply the structural rules (e.g. paragraphs and lines) to the text in the given scanner.
