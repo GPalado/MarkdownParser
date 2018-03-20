@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Implementation of the Hash Rule, in which one or more '#' followed by one or more
  * spaces denotes a header.
  */
-public class HashRule implements EffectRule {
+public class HashRule implements StructureRule {
 
     public HashRule() {
     }
@@ -20,14 +20,14 @@ public class HashRule implements EffectRule {
     @Override
     public boolean meetsCondition(Scanner s) {
         s.useDelimiter("\n");
-        return s.hasNext("#+[\\s]+[a-zA-Z0-9//\\\\`~!@#$%^&*()-=_+\\[\\]{}|'\",?><,.:;]+");
+        return s.hasNext("#+[\\s]+.+");
     }
 
     @Override
-    public List<TextNode> applyAction(Scanner s) {
+    public TextNode applyStructure(Scanner s) {
         if (meetsCondition(s)) {
             int depth = filterHashesAndSpaces(s);
-            return Arrays.asList(new HeaderNode(depth > 5 ? 5 : depth, parseChildren(s)));
+            return new HeaderNode(depth > 5 ? 5 : depth, parseChildren(s));
         }
         throw new IllegalArgumentException("HashRule cannot be applied to the given input.");
     }
