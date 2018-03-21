@@ -1,7 +1,6 @@
-package MarkdownToHTMLTests;
+package Tests;
 
 import MarkdownProcessor.MarkdownProcessor;
-import MarkdownProcessor.Nodes.MarkdownFileNode;
 import MarkdownProcessor.Nodes.TextNode;
 import MarkdownProcessor.Translators.HTMLTranslator;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import java.util.Scanner;
 import static org.junit.Assert.assertEquals;
 
 
-public class HTML_Tests {
+public class MarkdownProcessor_Tests {
     private static final MarkdownProcessor processor = new MarkdownProcessor();
 
     @Test
@@ -99,9 +98,15 @@ public class HTML_Tests {
     }
 
     @Test
-    public void header_upperBound_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("####### headerX>5"));
-        assertEquals("<h5>headerX>5</h5>\n", markdown.accept(new HTMLTranslator()));
+    public void header_sixthLevel_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("###### header6"));
+        assertEquals("<h6>header6</h6>\n", markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void header_exceedsSixthLevel_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("####### notHeader"));
+        assertEquals("<p>####### notHeader</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
@@ -158,12 +163,6 @@ public class HTML_Tests {
         assertEquals("<p><em><strong>Both</strong></em></p>\n", markdown.accept(new HTMLTranslator()));
     }
 
-//    @Test
-//    public void bulletedList_basecase_test2(){
-//        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List"));
-//        assertEquals("<ul>\n<li>Bulleted List</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
-//    }
-
     @Test
     public void coreCombo_headerItalics_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("# *Hello*"));
@@ -187,4 +186,10 @@ public class HTML_Tests {
         TextNode markdown = processor.parseMarkdown(new Scanner("# Hello\nHello *there*"));
         assertEquals("<h1>Hello</h1>\n<p>Hello <em>there</em></p>\n", markdown.accept(new HTMLTranslator()));
     }
+
+    //    @Test
+//    public void bulletedList_basecase_test2(){
+//        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List"));
+//        assertEquals("<ul>\n<li>Bulleted List</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
+//    }
 }
