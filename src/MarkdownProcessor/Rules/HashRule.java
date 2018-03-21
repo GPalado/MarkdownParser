@@ -1,6 +1,8 @@
 package MarkdownProcessor.Rules;
 
 import MarkdownProcessor.Nodes.HeaderNode;
+import MarkdownProcessor.Nodes.LineNode;
+import MarkdownProcessor.Nodes.StringNode;
 import MarkdownProcessor.Nodes.TextNode;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.Scanner;
  * spaces denotes a header.
  */
 public class HashRule implements StructureRule {
+    private static final int MAX_HASHES = 6;
 
     public HashRule() {
     }
@@ -20,14 +23,14 @@ public class HashRule implements StructureRule {
     @Override
     public boolean meetsCondition(Scanner s) {
         s.useDelimiter("\n");
-        return s.hasNext("#+[\\s]+.+");
+        return s.hasNext("#{1,6}[\\s]+.+");
     }
 
     @Override
     public TextNode applyStructure(Scanner s) {
         if (meetsCondition(s)) {
             int depth = filterHashesAndSpaces(s);
-            return new HeaderNode(depth > 5 ? 5 : depth, parseChildren(s));
+            return new HeaderNode(depth, parseChildren(s));
         }
         throw new IllegalArgumentException("HashRule cannot be applied to the given input.");
     }
