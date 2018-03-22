@@ -29,7 +29,7 @@ public class ParserHelper {
      * @param s
      * @returns TextNode corresponding to an effect rule if one matches.
      */
-    public static List<TextNode> applyEffectRules(Scanner s){
+    static List<TextNode> applyEffectRules(Scanner s){
         System.out.println("Parser applyEffectRules");
         List<TextNode> nodes = new ArrayList<>();
         while(s.hasNextLine()) {
