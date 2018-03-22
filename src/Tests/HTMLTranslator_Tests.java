@@ -58,4 +58,22 @@ public class HTMLTranslator_Tests {
         StringNode string = getStringNode("I am string");
         assertEquals("I am string", string.accept(translator));
     }
+
+    @Test
+    public void translate_numberedList_test(){
+        NumberedListNode nList = getNumberedListNode(
+                Arrays.asList(getLineNode(
+                        Arrays.asList(getStringNode("hello"))
+                )));
+        assertEquals("<ol>\n<li>hello</li>\n</ol>\n", nList.accept(translator));
+    }
+
+    @Test
+    public void translate_bulletedList_test(){
+        BulletedListNode bList = getBulletedListNode(
+                Arrays.asList(getLineNode(
+                        Arrays.asList(getStringNode("hello"))
+                )));
+        assertEquals("<ul>\n<li>hello</li>\n</ul>\n", bList.accept(translator));
+    }
 }
