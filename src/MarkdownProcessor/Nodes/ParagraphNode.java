@@ -3,6 +3,8 @@ package MarkdownProcessor.Nodes;
 import MarkdownProcessor.Translators.Translator;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Paragraph Node specifying a paragraph break.
@@ -16,7 +18,10 @@ public class ParagraphNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "\n";
+        return "Paragraph" +
+                Stream.of(lines)
+                        .map(child -> child.toString())
+                        .collect(Collectors.joining());
     }
 
     @Override

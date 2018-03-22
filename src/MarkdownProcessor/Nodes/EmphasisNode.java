@@ -23,11 +23,10 @@ public class EmphasisNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "*" +
+        return "Italics" +
                 Stream.of(children)
                 .map(child -> child.toString())
-                .collect(Collectors.joining()) +
-                "*";
+                .collect(Collectors.joining());
     }
 
     @Override

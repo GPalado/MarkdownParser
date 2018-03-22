@@ -26,9 +26,9 @@ public class HeaderNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return repeat("#", depth)  + " " +
+        return "Header" + depth +
                 Stream.of(children)
-                .map(child -> toString())
+                .map(child -> child.toString())
                 .collect(Collectors.joining());
     }
 
@@ -40,13 +40,5 @@ public class HeaderNode implements CollectorNode {
     @Override
     public List<TextNode> getChildren() {
         return children;
-    }
-
-    private String repeat(String s, int amount) {
-        String result = "";
-        for (int i = 0; i < amount; i++){
-            result += s;
-        }
-        return result;
     }
 }

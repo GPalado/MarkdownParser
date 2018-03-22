@@ -20,7 +20,8 @@ public class MarkdownFileNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return Stream.of(children)
+        return "Markdown" +
+                Stream.of(children)
                 .map(child -> child.toString())
                 .collect(Collectors.joining());
     }

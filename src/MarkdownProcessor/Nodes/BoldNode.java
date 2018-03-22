@@ -23,11 +23,10 @@ public class BoldNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "**" +
+        return "Bold" +
                 Stream.of(children)
                 .map(child -> child.toString())
-                .collect(Collectors.joining()) +
-                "**";
+                .collect(Collectors.joining());
     }
 
     @Override

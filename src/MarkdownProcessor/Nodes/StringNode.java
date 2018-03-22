@@ -14,7 +14,7 @@ public class StringNode implements TextNode {
 
     @Override
     public String toString(){
-        return value;
+        return "\"" + value + "\"";
     }
 
     @Override

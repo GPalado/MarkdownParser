@@ -19,7 +19,8 @@ public class LineNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return Stream.of(children)
+        return "Line" +
+                Stream.of(children)
                 .map(child -> child.toString())
                 .collect(Collectors.joining());
     }
