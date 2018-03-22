@@ -33,4 +33,12 @@ public class NodeFactory {
     public static StringNode getStringNode(String string) {
         return new StringNode(string);
     }
+
+    public static BulletedListNode getBulletedListNode(List<TextNode> children){
+        return new BulletedListNode(children);
+    }
+
+    public static NumberedListNode getNumberedListNode(List<TextNode> children){
+        return new NumberedListNode(children);
+    }
 }
