@@ -3,6 +3,7 @@ package MarkdownProcessor.Nodes;
 import MarkdownProcessor.Translators.Translator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,6 +40,6 @@ public class HeaderNode implements CollectorNode {
 
     @Override
     public List<TextNode> getChildren() {
-        return children;
+        return Collections.unmodifiableList(children);
     }
 }
