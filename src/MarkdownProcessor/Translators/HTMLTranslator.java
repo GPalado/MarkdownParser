@@ -42,9 +42,9 @@ public class HTMLTranslator implements Translator {
 
     @Override
     public String translateParagraph(ParagraphNode node) {
-        return "<p>" +
+        return "<p>\n" +
                 node.getChildren().stream()
-                        .map(n -> n.accept(this))
+                        .map(n -> n.accept(this) + "\n")
                         .collect(Collectors.joining()) +
                 "</p>";
     }
@@ -52,12 +52,32 @@ public class HTMLTranslator implements Translator {
     @Override
     public String translateMarkdownFile(MarkdownFileNode node) {
         return node.getChildren().stream()
-                .map(n -> n.accept(this) + "\n") //TODO: confirm \n is needed here
+                .map(n -> n.accept(this) + "\n")
                 .collect(Collectors.joining());
     }
 
     @Override
     public String translateString(StringNode node) {
-        return node.toString();
+        return node.getValue();
     }
+
+    @Override
+    public String translateNumberedList(NumberedListNode node) {
+        return "<ol>\n" +
+                node.getChildren().stream()
+                .map(n -> "<li>" + n.accept(this) + "</li>\n")
+                .collect(Collectors.joining()) +
+                "</ol>";
+    }
+
+    @Override
+    public String translateBulletedList(BulletedListNode node) {
+        return "<ul>\n" +
+                node.getChildren().stream()
+                        .map(n -> "<li>" + n.accept(this) + "</li>\n")
+                        .collect(Collectors.joining()) +
+                "</ul>";
+    }
+
+
 }

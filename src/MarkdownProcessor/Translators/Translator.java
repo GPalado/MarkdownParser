@@ -55,4 +55,18 @@ public interface Translator {
      * @return
      */
     String translateString(StringNode node);
+
+    /**
+     * Translates a NumberedList node.
+     * @param node
+     * @return
+     */
+    String translateNumberedList(NumberedListNode node);
+
+    /**
+     * Translates a BulletedList node.
+     * @param node
+     * @return
+     */
+    String translateBulletedList(BulletedListNode node);
 }
