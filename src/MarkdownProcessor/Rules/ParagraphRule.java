@@ -15,13 +15,13 @@ public class ParagraphRule implements StructureRule {
     @Override
     public TextNode applyStructure(Scanner s) {
         List<TextNode> lines = new ArrayList<>();
-        while (s.hasNextLine()) {
+        while (s.hasNextLine() && meetsCondition(s)) {
             String line = s.nextLine();
-            if (line.equals("")) { //if empty line
+            if (line.equals("")) {
                 scanThroughEmptyLines(s);
-                if (lines.isEmpty()) { //Paragraph body not read yet. Keep scanning.
+                if (lines.isEmpty()) {
                     continue;
-                } else { //Paragraph body read - end of paragraph.
+                } else {
                     break;
                 }
             }
@@ -38,6 +38,11 @@ public class ParagraphRule implements StructureRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
+        for(StructureRule rule : MarkdownFileRule.STRUCTURE_RULES){
+            if(rule.meetsCondition(s)){
+                return false;
+            }
+        }
         return true;
     }
 }

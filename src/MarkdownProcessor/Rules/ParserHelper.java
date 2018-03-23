@@ -30,25 +30,19 @@ public class ParserHelper {
      * @returns TextNode corresponding to an effect rule if one matches.
      */
     static List<TextNode> applyEffectRules(Scanner s){
-        System.out.println("Parser applyEffectRules");
         List<TextNode> nodes = new ArrayList<>();
         while(s.hasNextLine()) {
             nodes.addAll(processLine(new Scanner(s.nextLine())));
         }
-        System.out.println("done.");
         return nodes;
     }
 
     private static List<TextNode> processLine(Scanner s){
         for (EffectRule r : EFFECT_RULES) {
-            System.out.println("Checking " + r.getClass());
             if (r.meetsCondition(s)) {
-                System.out.println("Parser meets " + r.getClass());
                 return r.applyAction(s);
             }
         }
-        System.out.println("Parser no match");
-        //TODO: if no rules can be applied, read as string? What will be the delimiter?
         return Arrays.asList(new StringNode(s.nextLine()));
     }
 }

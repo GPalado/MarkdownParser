@@ -10,22 +10,28 @@ import java.util.Scanner;
 
 public class MarkdownFileRule implements StructureRule {
 
-    private static final List<StructureRule> rules = Arrays.asList(new HashRule(), new BulletedListRule(), new ParagraphRule());
+    public static final List<StructureRule> STRUCTURE_RULES =
+            Arrays.asList(new HashRule(), new BulletedListRule(), new NumberedListRule());
 
     public MarkdownFileRule(){}
 
     @Override
     public TextNode applyStructure(Scanner s) {
-        /**
-         * TODO: Note: lines with header and bulleted list are not in paras.
-         */
         List<TextNode> paragraphs = new ArrayList<>();
+        boolean foundRuleMatch;
         while(s.hasNextLine()){
-            for(StructureRule r : rules) {
+            foundRuleMatch = false;
+            for(StructureRule r : STRUCTURE_RULES) {
                 if(r.meetsCondition(s)){
+                    System.out.println("Matched " + r.getClass());
                     paragraphs.add(r.applyStructure(s));
+                    foundRuleMatch = true;
                     break;
                 }
+            }
+            if(!foundRuleMatch){
+                System.out.println("Matched none - para");
+                paragraphs.add(new ParagraphRule().applyStructure(s));
             }
         }
         return new MarkdownFileNode(paragraphs);

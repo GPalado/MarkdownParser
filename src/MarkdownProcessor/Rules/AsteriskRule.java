@@ -12,7 +12,6 @@ import java.util.*;
  */
 public class AsteriskRule implements EffectRule {
     public static final HashMap<Integer, Class> ASTERISK_COUNT_TO_RULES = new HashMap<>();
-    private static final List<EffectRule> rules = Arrays.asList(new EmphasisRule(), new BoldRule());
 
     static {
         //TODO: confirm usage

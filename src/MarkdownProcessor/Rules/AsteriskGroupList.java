@@ -14,7 +14,6 @@ public class AsteriskGroupList extends ArrayList<AsteriskGroupList.AsteriskGroup
     private final String string;
 
     private enum Side {
-        //TODO: confirm usage
         LEFT,
         RIGHT,
         MIDDLE,
