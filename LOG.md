@@ -5,3 +5,11 @@
 5. 20180317 1200 Implemented more rules (2 * 30min blocks within 2 hrs)
 6. 20180317 1600 Completed structural rule implementations. Testing of rules (2 * 30min blocks within 2 hrs)
 7. 20180317 1800 Completed most effect rule implementations. Testing of rules (2 * 30min blocks within 2 hrs)
+8. 20180318 1600 Refactored parsing of effects
+9. 20180319 1500 Simplified regex
+10. 20180320 1800 Reclassified interface and adjusted implementations accordingly
+11. 20180320 1900 Refactored asterisk logic
+12. 20180320 2000 Recategorized rules (strucure vs effect) and adjusted implementations
+13. 20180321 1000 Wrote and ran more tests for translating and parsing
+14. 20180321 1100 Fixed hash rule
+15. 20180322 1500 Changed toString to better describe syntax tree node content and utilized in testing.
