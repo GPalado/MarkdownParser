@@ -1,1 +1,2 @@
 java -jar SWEN301_Craft_Project.jar --test
+java -jar SWEN301_Craft_Project.jar MarkdownFile.txt OutputHTML.txt
