@@ -16,55 +16,55 @@ public class MarkdownProcessor_Tests {
     @Test
     public void paragraph_oneBreak_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("para1\n\npara2"));
-        assertEquals("<p>para1</p>\n<p>para2</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\npara1\n</p>\n<p>\npara2\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void paragraph_twoBreak_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("para1\n\n\npara2")); // Any number of breaks should result in one break
-        assertEquals("<p>para1</p>\n<p>para2</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\npara1\n</p>\n<p>\npara2\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_basecase_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("*italics*"));
-        assertEquals("<p><em>italics</em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<em>italics</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_noPair_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("*notItalics"));
-        assertEquals("<p>*notItalics</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n*notItalics\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_rightHeavy_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("*italics**"));
-        assertEquals("<p><em>italics</em>*</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<em>italics</em>*\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_leftHeavy_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("**italics*"));
-        assertEquals("<p>*<em>italics</em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n*<em>italics</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_basecase_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("**bold**"));
-        assertEquals("<p><strong>bold</strong></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<strong>bold</strong>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_rightHeavy_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("**bold***"));
-        assertEquals("<p><strong>bold</strong>*</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<strong>bold</strong>*\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_leftHeavy_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("***bold**"));
-        assertEquals("<p>*<strong>bold</strong></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n*<strong>bold</strong>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
@@ -106,61 +106,61 @@ public class MarkdownProcessor_Tests {
     @Test
     public void header_exceedsSixthLevel_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("####### notHeader"));
-        assertEquals("<p>####### notHeader</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n####### notHeader\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void header_missingSpace_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("###notHeader"));
-        assertEquals("<p>###notHeader</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n###notHeader\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_invalidSpace_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("** notBold**"));
-        assertEquals("<p>** notBold**</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n** notBold**\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_invalidSpace_test2(){
         TextNode markdown = processor.parseMarkdown(new Scanner("**notBold **"));
-        assertEquals("<p>**notBold **</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n**notBold **\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_validSpace_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner(" **Bold**"));
-        assertEquals("<p><strong>Bold</strong></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<strong>Bold</strong>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void bold_validSpace_test2(){
         TextNode markdown = processor.parseMarkdown(new Scanner("**Bold** "));
-        assertEquals("<p><strong>Bold</strong></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<strong>Bold</strong>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_invalidSpace_test2(){
         TextNode markdown = processor.parseMarkdown(new Scanner("*notItalics *"));
-        assertEquals("<p>*notItalics *</p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n*notItalics *\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_validSpace_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner(" *Italics*"));
-        assertEquals("<p><em>Italics</em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<em>Italics</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void italics_validSpace_test2(){
         TextNode markdown = processor.parseMarkdown(new Scanner("*Italics* "));
-        assertEquals("<p><em>Italics</em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<em>Italics</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void nested_dualGroup_test2(){
         TextNode markdown = processor.parseMarkdown(new Scanner("***Both***"));
-        assertEquals("<p><em><strong>Both</strong></em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\n<em><strong>Both</strong></em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
@@ -184,12 +184,30 @@ public class MarkdownProcessor_Tests {
     @Test
     public void coreCombo_headerParaItalics_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("# Hello\nHello *there*"));
-        assertEquals("<h1>Hello</h1>\n<p>Hello <em>there</em></p>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<h1>Hello</h1>\n<p>\nHello <em>there</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
-    //    @Test
-//    public void bulletedList_basecase_test2(){
-//        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List"));
-//        assertEquals("<ul>\n<li>Bulleted List</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
-//    }
+        @Test
+    public void bulletedList_basecase_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List\n* Content"));
+        assertEquals("<ul>\n<li>Bulleted List</li>\n<li>Content</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void numberedList_basecase_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("1. Numbered List\n1. Content"));
+        assertEquals("<ol>\n<li>Numbered List</li>\n<li>Content</li>\n</ol>\n", markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void listsAndCoreCombo_headerAndBulletedList_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("## Header2\n* Content\n* More Content"));
+        assertEquals("<h2>Header2</h2>\n<ul>\n<li>Content</li>\n<li>More Content</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void listsAndCoreCombo_paragraphAndNumberedList_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("Random text yay\nAnd another line of text\n1. Content\n2. More Content"));
+        assertEquals("<p>\nRandom text yay\nAnd another line of text\n</p>\n<ol>\n<li>Content</li>\n<li>More Content</li>\n</ol>\n", markdown.accept(new HTMLTranslator()));
+    }
 }

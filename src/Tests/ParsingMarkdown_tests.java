@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static Tests.NodeFactory.*;
 import static org.junit.Assert.assertEquals;
 
 public class ParsingMarkdown_tests {
@@ -39,5 +38,17 @@ public class ParsingMarkdown_tests {
     public void parserHelper_parseLineParaAndMarkdown() {
         assertEquals("Markdown[Paragraph[Line[\"I am a Line\"]]]",
                 ParserHelper.applyStructureRules(new Scanner("I am a Line")).toString());
+    }
+
+    @Test
+    public void parserHelper_parseBulletedList() {
+        assertEquals("Markdown[BulletedList[Line[\"I am a Line\"]Line[\"And another\"]]]",
+                ParserHelper.applyStructureRules(new Scanner("* I am a Line\n* And another")).toString());
+    }
+
+    @Test
+    public void parserHelper_parseNumberedList() {
+        assertEquals("Markdown[NumberedList[Line[\"I am a Line\"]Line[\"And another\"]]]",
+                ParserHelper.applyStructureRules(new Scanner("1. I am a Line\n1. And another")).toString());
     }
 }

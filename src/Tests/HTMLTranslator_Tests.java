@@ -21,7 +21,7 @@ public class HTMLTranslator_Tests {
     @Test
     public void translate_paragraph_test(){
         ParagraphNode paragraph = getParagraphNode(Arrays.asList(getStringNode("I am para body")));
-        assertEquals("<p>I am para body</p>", paragraph.accept(translator));
+        assertEquals("<p>\nI am para body\n</p>", paragraph.accept(translator));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class HTMLTranslator_Tests {
                         getParagraphNode(Arrays.asList(getStringNode("I am paragraph")))
                 )
         );
-        assertEquals("<h1>I am header</h1>\n<p>I am paragraph</p>\n", markdown.accept(translator));
+        assertEquals("<h1>I am header</h1>\n<p>\nI am paragraph\n</p>\n", markdown.accept(translator));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class HTMLTranslator_Tests {
                 Arrays.asList(getLineNode(
                         Arrays.asList(getStringNode("hello"))
                 )));
-        assertEquals("<ol>\n<li>hello</li>\n</ol>\n", nList.accept(translator));
+        assertEquals("<ol>\n<li>hello</li>\n</ol>", nList.accept(translator));
     }
 
     @Test
@@ -74,6 +74,6 @@ public class HTMLTranslator_Tests {
                 Arrays.asList(getLineNode(
                         Arrays.asList(getStringNode("hello"))
                 )));
-        assertEquals("<ul>\n<li>hello</li>\n</ul>\n", bList.accept(translator));
+        assertEquals("<ul>\n<li>hello</li>\n</ul>", bList.accept(translator));
     }
 }
