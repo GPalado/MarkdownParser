@@ -208,6 +208,28 @@ public class MarkdownProcessor_Tests {
     @Test
     public void listsAndCoreCombo_paragraphAndNumberedList_test(){
         TextNode markdown = processor.parseMarkdown(new Scanner("Random text yay\nAnd another line of text\n1. Content\n2. More Content"));
-        assertEquals("<p>\nRandom text yay\nAnd another line of text\n</p>\n<ol>\n<li>Content</li>\n<li>More Content</li>\n</ol>\n", markdown.accept(new HTMLTranslator()));
+        assertEquals("<p>\nRandom text yay\nAnd another line of text\n</p>\n<ol>\n<li>Content</li>\n<li>More Content</li>\n</ol>\n",
+                markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void parasAndSeparatorCombo_basecase_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n---\nAnd I'm another"));
+        assertEquals("<p>\nYo wassup I'm a para\n</p>\n<hr>\n<p>\nAnd I'm another\n</p>\n",
+                markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void parasAndSeparatorCombo_invalidSeparator_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n---And I'm part of the same"));
+        assertEquals("<p>\nYo wassup I'm a para\n---And I'm part of the same\n</p>\n",
+                markdown.accept(new HTMLTranslator()));
+    }
+
+    @Test
+    public void parasAndSeparatorCombo_invalidSeparator_test2(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n--\nAnd I'm part of the same"));
+        assertEquals("<p>\nYo wassup I'm a para\n--\nAnd I'm part of the same\n</p>\n",
+                markdown.accept(new HTMLTranslator()));
     }
 }

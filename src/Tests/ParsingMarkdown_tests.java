@@ -51,4 +51,17 @@ public class ParsingMarkdown_tests {
         assertEquals("Markdown[NumberedList[Line[\"I am a Line\"]Line[\"And another\"]]]",
                 ParserHelper.applyStructureRules(new Scanner("1. I am a Line\n1. And another")).toString());
     }
+
+    @Test
+    public void parserHelper_parseSeparator(){
+        assertEquals("Markdown[Paragraph[Line[\"Hello\"]]Separator|Paragraph[Line[\"There\"]]]",
+                ParserHelper.applyStructureRules(new Scanner("Hello\n---\nThere")).toString());
+    }
+
+
+    @Test
+    public void parserHelper_parseMultiParagraphs(){
+        assertEquals("Markdown[Paragraph[Line[\"Hello\"]]Paragraph[Line[\"There\"]]]",
+                ParserHelper.applyStructureRules(new Scanner("Hello\n\nThere")).toString());
+    }
 }

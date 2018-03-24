@@ -41,4 +41,8 @@ public class NodeFactory {
     public static NumberedListNode getNumberedListNode(List<TextNode> children){
         return new NumberedListNode(children);
     }
+
+    public static SeparatorNode getSeparatorNode(){
+        return new SeparatorNode();
+    }
 }

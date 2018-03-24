@@ -1,6 +1,7 @@
 package Tests;
 
 import MarkdownProcessor.Nodes.*;
+import MarkdownProcessor.Rules.MarkdownFileRule;
 import MarkdownProcessor.Translators.HTMLTranslator;
 import org.junit.Test;
 
@@ -75,5 +76,21 @@ public class HTMLTranslator_Tests {
                         Arrays.asList(getStringNode("hello"))
                 )));
         assertEquals("<ul>\n<li>hello</li>\n</ul>", bList.accept(translator));
+    }
+
+    @Test
+    public void translate_parasAndSeparator_test(){
+        MarkdownFileNode markdown = getMarkdownFileNode(
+                Arrays.asList(getParagraphNode(
+                        Arrays.asList(getLineNode(
+                                Arrays.asList(getStringNode("Hello"))
+                        ))
+                ), getSeparatorNode(), getParagraphNode(
+                        Arrays.asList(getLineNode(
+                                Arrays.asList(getStringNode("There"))
+                        ))
+                ))
+        );
+        assertEquals("<p>\nHello\n</p>\n<hr>\n<p>\nThere\n</p>\n", markdown.accept(translator));
     }
 }
