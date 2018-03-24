@@ -20,10 +20,11 @@ public class LineNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "Line" +
-                Stream.of(children)
+        return "Line[" +
+                children.stream()
                 .map(child -> child.toString())
-                .collect(Collectors.joining());
+                .collect(Collectors.joining()) +
+                "]";
     }
 
     @Override

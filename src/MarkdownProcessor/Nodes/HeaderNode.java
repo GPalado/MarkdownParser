@@ -27,10 +27,11 @@ public class HeaderNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "Header" + depth +
-                Stream.of(children)
+        return "Header" + depth + "[" +
+                children.stream()
                 .map(child -> child.toString())
-                .collect(Collectors.joining());
+                .collect(Collectors.joining()) +
+                "]";
     }
 
     @Override

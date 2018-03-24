@@ -19,10 +19,11 @@ public class ParagraphNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "Paragraph" +
-                Stream.of(lines)
+        return "Paragraph[" +
+                lines.stream()
                         .map(child -> child.toString())
-                        .collect(Collectors.joining());
+                        .collect(Collectors.joining()) +
+                "]";
     }
 
     @Override
