@@ -11,28 +11,28 @@ import java.util.Scanner;
 public class MarkdownFileRule implements StructureRule {
 
     public static final List<StructureRule> STRUCTURE_RULES =
-            Arrays.asList(new HashRule(), new BulletedListRule(), new NumberedListRule(), new SeparatorRule());
+            Arrays.asList(new HashRule(), new BulletedListRule(), new NumberedListRule(), new SeparatorRule(), new BlockquoteRule());
 
     public MarkdownFileRule(){}
 
     @Override
     public TextNode applyStructure(Scanner s) {
-        List<TextNode> paragraphs = new ArrayList<>();
+        List<TextNode> children = new ArrayList<>();
         boolean foundRuleMatch;
         while(s.hasNextLine()){
             foundRuleMatch = false;
             for(StructureRule r : STRUCTURE_RULES) {
                 if(r.meetsCondition(s)){
-                    paragraphs.add(r.applyStructure(s));
+                    children.add(r.applyStructure(s));
                     foundRuleMatch = true;
                     break;
                 }
             }
             if(!foundRuleMatch){
-                paragraphs.add(new ParagraphRule().applyStructure(s));
+                children.add(new ParagraphRule().applyStructure(s));
             }
         }
-        return new MarkdownFileNode(paragraphs);
+        return new MarkdownFileNode(children);
     }
 
     @Override
