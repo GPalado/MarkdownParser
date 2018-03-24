@@ -232,4 +232,12 @@ public class MarkdownProcessor_Tests {
         assertEquals("<p>\nYo wassup I'm a para\n--\nAnd I'm part of the same\n</p>\n",
                 markdown.accept(new HTMLTranslator()));
     }
+
+    @Test
+    public void parasAndBlockquote_basecase_test(){
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n> And I'm blockquote\n> Me too\nNot me"));
+        assertEquals("<p>\nYo wassup I'm a para\n</p>\n<blockquote>\n<p>\n" +
+                        "And I'm blockquote\nMe too\n</p>\n</blockquote>\n<p>\nNot me\n</p>\n",
+                markdown.accept(new HTMLTranslator()));
+    }
 }

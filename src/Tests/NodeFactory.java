@@ -1,6 +1,7 @@
 package Tests;
 
 import MarkdownProcessor.Nodes.*;
+import jdk.nashorn.internal.ir.Block;
 
 import java.util.List;
 
@@ -44,5 +45,9 @@ public class NodeFactory {
 
     public static SeparatorNode getSeparatorNode(){
         return new SeparatorNode();
+    }
+
+    public static BlockquoteNode getBlockquoteNode(List<TextNode> children){
+        return new BlockquoteNode(children);
     }
 }

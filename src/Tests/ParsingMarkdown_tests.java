@@ -58,6 +58,11 @@ public class ParsingMarkdown_tests {
                 ParserHelper.applyStructureRules(new Scanner("Hello\n---\nThere")).toString());
     }
 
+    @Test
+    public void parserHelper_parseBlockquote(){
+        assertEquals("Markdown[Paragraph[Line[\"Hello\"]]Blockquote[Paragraph[Line[\"Hello\"]]]Paragraph[Line[\"There\"]]]",
+                ParserHelper.applyStructureRules(new Scanner("Hello\n> Hello\nThere")).toString());
+    }
 
     @Test
     public void parserHelper_parseMultiParagraphs(){
