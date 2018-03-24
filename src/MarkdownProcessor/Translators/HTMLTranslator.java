@@ -79,5 +79,10 @@ public class HTMLTranslator implements Translator {
                 "</ul>";
     }
 
+    @Override
+    public String translateSeparator(SeparatorNode node) {
+        return "<hr>";
+    }
+
 
 }

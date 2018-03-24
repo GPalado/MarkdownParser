@@ -69,4 +69,11 @@ public interface Translator {
      * @return
      */
     String translateBulletedList(BulletedListNode node);
+
+    /**
+     * Translates a Separator node.
+     * @param node
+     * @return
+     */
+    String translateSeparator(SeparatorNode node);
 }
