@@ -20,15 +20,19 @@ public class Main {
 
     private static void runApp(String[] args) {
         if(args.length < 2) return;
-        //first arg -> input source
-        //second arg -> output file name
         try {
             Scanner scanner = new Scanner(new File(args[0]));
             File file = new File(args[1]);
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-            writer.write(new MarkdownProcessor().parseMarkdown(scanner).accept(new HTMLTranslator()));
+            FileWriter writer = new FileWriter(file);
+            String output = new MarkdownProcessor().parseMarkdown(scanner).accept(new HTMLTranslator());
+            Scanner scanToOut = new Scanner(output);
+            String lineSeparator = System.getProperty("line.separator");
+            while(scanToOut.hasNextLine()) {
+                writer.write(scanToOut.nextLine() + lineSeparator);
+            }
             System.out.println("Done Translation.");
+            scanner.close();
+            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
