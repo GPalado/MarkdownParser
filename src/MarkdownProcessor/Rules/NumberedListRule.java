@@ -12,7 +12,6 @@ public class NumberedListRule implements StructureRule {
     public TextNode applyStructure(Scanner s) {
         List<TextNode> children = new ArrayList<>();
         while(s.hasNextLine() && meetsCondition(s)){
-            //TODO confirm number of spaces
             s.reset();
             s.next();
             String line = s.nextLine().trim();
