@@ -13,11 +13,11 @@ public class MarkdownProcessor {
     public MarkdownProcessor() {}
 
     /**
-     * Parses markdown lines into LineNodes.
+     * Parses markdown into syntax tree and returns the root node of the tree.
      *
      * @return TextNode representing the text in the scanner.
      */
-    public TextNode parseMarkdown(Scanner scanner) {
+    public static TextNode parseMarkdown(Scanner scanner) {
         return ParserHelper.applyStructureRules(scanner);
     }
 }
