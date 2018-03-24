@@ -21,10 +21,11 @@ public class MarkdownFileNode implements CollectorNode {
 
     @Override
     public String toString() {
-        return "Markdown" +
-                Stream.of(children)
+        return "Markdown[" +
+                children.stream()
                 .map(child -> child.toString())
-                .collect(Collectors.joining());
+                .collect(Collectors.joining()) +
+                "]";
     }
 
     @Override
