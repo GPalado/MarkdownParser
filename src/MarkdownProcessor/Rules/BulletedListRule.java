@@ -11,7 +11,7 @@ class BulletedListRule implements StructureRule {
     @Override
     public boolean meetsCondition(Scanner s) {
         //TODO: figure out nested?
-        s.useDelimiter("\n");
+        s.useDelimiter(System.getProperty("line.separator"));
         return s.hasNext("[\\\\*]{1}[\\s]+.+");
     }
 

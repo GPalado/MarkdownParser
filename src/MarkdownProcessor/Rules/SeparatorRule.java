@@ -16,7 +16,7 @@ public class SeparatorRule implements StructureRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        s.useDelimiter("\n");
+        s.useDelimiter(System.getProperty("line.separator"));
         return s.hasNext("-{3,}");
     }
 }

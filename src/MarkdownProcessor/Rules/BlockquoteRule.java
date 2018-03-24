@@ -24,7 +24,7 @@ public class BlockquoteRule implements StructureRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        s.useDelimiter("\n");
+        s.useDelimiter(System.getProperty("line.separator"));
         return s.hasNext(">{1}\\s{1}.*");
     }
 }

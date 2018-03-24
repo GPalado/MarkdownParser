@@ -22,8 +22,7 @@ public class NumberedListRule implements StructureRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        //TODO: figure out nested?
-        s.useDelimiter("\n");
+        s.useDelimiter(System.getProperty("line.separator"));
         return s.hasNext("[0-9]{1}.{1}[\\s]+.+");
     }
 }

@@ -21,7 +21,7 @@ public class HashRule implements StructureRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        s.useDelimiter("\n");
+        s.useDelimiter(System.getProperty("line.separator"));
         return s.hasNext("#{1,6}[\\s]+.+");
     }
 
