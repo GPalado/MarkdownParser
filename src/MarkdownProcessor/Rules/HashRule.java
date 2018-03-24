@@ -15,7 +15,6 @@ import java.util.Scanner;
  * spaces denotes a header.
  */
 public class HashRule implements StructureRule {
-    private static final int MAX_HASHES = 6;
 
     public HashRule() {
     }
