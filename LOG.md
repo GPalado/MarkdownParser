@@ -13,3 +13,6 @@
 13. 20180321 1000 Wrote and ran more tests for translating and parsing
 14. 20180321 1100 Fixed hash rule
 15. 20180322 1500 Changed toString to better describe syntax tree node content and utilized in testing.
+16. 20180324 1000 Created readme and build files
+17. 20180324 1100 Completed implementation of lists
+18. 20180324 1900 Completed implementation of horizontal rule and blockquote
