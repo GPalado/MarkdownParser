@@ -50,7 +50,6 @@ public class HashRule implements StructureRule {
     private int filterHashesAndSpaces(Scanner scanner) {
         scanner.reset();
         String hashes = scanner.next();
-        System.out.println(hashes+"|");
         scanner.skip("[\\s]*");
         return hashes.length();
     }
