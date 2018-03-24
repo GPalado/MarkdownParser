@@ -65,8 +65,8 @@ public class HTMLTranslator implements Translator {
     public String translateNumberedList(NumberedListNode node) {
         return "<ol>\n" +
                 node.getChildren().stream()
-                .map(n -> "<li>" + n.accept(this) + "</li>\n")
-                .collect(Collectors.joining()) +
+                        .map(n -> "<li>" + n.accept(this) + "</li>\n")
+                        .collect(Collectors.joining()) +
                 "</ol>";
     }
 
@@ -82,6 +82,15 @@ public class HTMLTranslator implements Translator {
     @Override
     public String translateSeparator(SeparatorNode node) {
         return "<hr>";
+    }
+
+    @Override
+    public String translateBlockquote(BlockquoteNode node) {
+        return "<blockquote>\n" +
+                node.getChildren().stream()
+                        .map(n -> n.accept(this) + "\n")
+                        .collect(Collectors.joining()) +
+                "</blockquote>";
     }
 
 

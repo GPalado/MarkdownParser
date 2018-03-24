@@ -76,4 +76,11 @@ public interface Translator {
      * @return
      */
     String translateSeparator(SeparatorNode node);
+
+    /**
+     * Translates a Blockquote node.
+     * @param node
+     * @return
+     */
+    String translateBlockquote(BlockquoteNode node);
 }
