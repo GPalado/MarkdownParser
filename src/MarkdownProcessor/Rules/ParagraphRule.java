@@ -31,7 +31,7 @@ public class ParagraphRule implements StructureRule {
     }
 
     private void scanThroughEmptyLines(Scanner scanner) {
-        while (scanner.hasNext("\n")) {
+        while (scanner.hasNext(System.getProperty("line.separator"))) {
             scanner.nextLine();
         }
     }

@@ -24,7 +24,7 @@ public class AsteriskRule implements EffectRule {
 
     @Override
     public boolean meetsCondition(Scanner s) {
-        s.useDelimiter(System.getProperty("line.separator"));
+        s.useDelimiter("\r\n");
         return s.hasNext(".*\\*.*");
     }
 
