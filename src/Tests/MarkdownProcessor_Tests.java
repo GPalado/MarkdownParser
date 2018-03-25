@@ -183,38 +183,39 @@ public class MarkdownProcessor_Tests {
 
     @Test
     public void coreCombo_headerParaItalics_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("# Hello\nHello *there*"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("# Hello\r\nHello *there*"));
         assertEquals("<h1>Hello</h1>\n<p>\nHello <em>there</em>\n</p>\n", markdown.accept(new HTMLTranslator()));
     }
 
         @Test
     public void bulletedList_basecase_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List\n* Content"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("* Bulleted List\r\n* Content"));
         assertEquals("<ul>\n<li>Bulleted List</li>\n<li>Content</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void numberedList_basecase_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("1. Numbered List\n1. Content"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("1. Numbered List\r\n1. Content"));
         assertEquals("<ol>\n<li>Numbered List</li>\n<li>Content</li>\n</ol>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void listsAndCoreCombo_headerAndBulletedList_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("## Header2\n* Content\n* More Content"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("## Header2\r\n* Content\r\n* More Content"));
         assertEquals("<h2>Header2</h2>\n<ul>\n<li>Content</li>\n<li>More Content</li>\n</ul>\n", markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void listsAndCoreCombo_paragraphAndNumberedList_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("Random text yay\nAnd another line of text\n1. Content\n2. More Content"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("Random text yay\r\nAnd another line of text\r\n" +
+                "1. Content\r\n2. More Content"));
         assertEquals("<p>\nRandom text yay\nAnd another line of text\n</p>\n<ol>\n<li>Content</li>\n<li>More Content</li>\n</ol>\n",
                 markdown.accept(new HTMLTranslator()));
     }
 
     @Test
     public void parasAndSeparatorCombo_basecase_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n---\nAnd I'm another"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\r\n---\r\nAnd I'm another"));
         assertEquals("<p>\nYo wassup I'm a para\n</p>\n<hr>\n<p>\nAnd I'm another\n</p>\n",
                 markdown.accept(new HTMLTranslator()));
     }
@@ -235,7 +236,8 @@ public class MarkdownProcessor_Tests {
 
     @Test
     public void parasAndBlockquote_basecase_test(){
-        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\n> And I'm blockquote\n> Me too\nNot me"));
+        TextNode markdown = processor.parseMarkdown(new Scanner("Yo wassup I'm a para\r\n> And I'm blockquote\r\n> " +
+                "Me too\r\n\r\nNot me"));
         assertEquals("<p>\nYo wassup I'm a para\n</p>\n<blockquote>\n<p>\n" +
                         "And I'm blockquote\nMe too\n</p>\n</blockquote>\n<p>\nNot me\n</p>\n",
                 markdown.accept(new HTMLTranslator()));

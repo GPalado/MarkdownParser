@@ -43,25 +43,25 @@ public class ParsingMarkdown_tests {
     @Test
     public void parserHelper_parseBulletedList() {
         assertEquals("Markdown[BulletedList[Line[\"I am a Line\"]Line[\"And another\"]]]",
-                ParserHelper.applyStructureRules(new Scanner("* I am a Line\n* And another")).toString());
+                ParserHelper.applyStructureRules(new Scanner("* I am a Line\r\n* And another")).toString());
     }
 
     @Test
     public void parserHelper_parseNumberedList() {
         assertEquals("Markdown[NumberedList[Line[\"I am a Line\"]Line[\"And another\"]]]",
-                ParserHelper.applyStructureRules(new Scanner("1. I am a Line\n1. And another")).toString());
+                ParserHelper.applyStructureRules(new Scanner("1. I am a Line\r\n1. And another")).toString());
     }
 
     @Test
     public void parserHelper_parseSeparator(){
         assertEquals("Markdown[Paragraph[Line[\"Hello\"]]Separator|Paragraph[Line[\"There\"]]]",
-                ParserHelper.applyStructureRules(new Scanner("Hello\n---\nThere")).toString());
+                ParserHelper.applyStructureRules(new Scanner("Hello\r\n---\r\nThere")).toString());
     }
 
     @Test
     public void parserHelper_parseBlockquote(){
         assertEquals("Markdown[Paragraph[Line[\"Hello\"]]Blockquote[Paragraph[Line[\"Hello\"]]]Paragraph[Line[\"There\"]]]",
-                ParserHelper.applyStructureRules(new Scanner("Hello\n> Hello\nThere")).toString());
+                ParserHelper.applyStructureRules(new Scanner("Hello\r\n> Hello\r\nThere")).toString());
     }
 
     @Test
